@@ -58,9 +58,9 @@ function App({ bounds }: Props) {
   }), [bounds])
 
   return (
-    <>
       <Map
-        style={{ height: '500px'}}
+    reuseMaps
+    style={{ height: '95vh'}}
         initialViewState={INITIAL_VIEW_STATE}
         mapStyle={'mapbox://styles/mapbox/dark-v11'}
         mapboxAccessToken=''

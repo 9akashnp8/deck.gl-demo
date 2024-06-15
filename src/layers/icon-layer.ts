@@ -1,6 +1,6 @@
 import { IconLayer } from "deck.gl";
 
-import flows from '../../public/data/flows.json'
+import { getLocationTrips } from "../utils";
 
 type DataType = {
     id: string;
@@ -10,36 +10,8 @@ type DataType = {
 }
 
 function calculateIconSize(id: string) {
-    const internalTrips = flows
-        .filter((flow) => {
-            if (id == flow.dest || id == flow.origin) {
-                if (flow.dest == flow.origin) {
-                    return flow
-                }
-            }
-        })
-        .reduce((accumulator, currentValue) => (
-            accumulator + currentValue.count
-        ), 0)
-    const incomingTrips = flows
-        .filter((flow) => {
-            if (id == flow.dest && id !== flow.origin) {
-                return flow
-            }
-        })
-        .reduce((accumulator, currentValue) => (
-            accumulator + currentValue.count
-        ), 0)
-    const outgoingTrips = flows
-        .filter((flow) => {
-            if (id == flow.origin && id !== flow.dest) {
-                return flow
-            }
-        })
-        .reduce((accumulator, currentValue) => (
-            accumulator + currentValue.count
-        ), 0)
-    return (incomingTrips + outgoingTrips + internalTrips) / 3000
+    const [incoming, outgoing, internal] = getLocationTrips(id)
+    return (incoming + outgoing + internal) / 3000
 }
 
 
@@ -52,7 +24,7 @@ const iconLayer = new IconLayer<DataType>({
     getSize: (d: DataType) => calculateIconSize(d.id),
     iconAtlas: './deckgl-icon.png',
     iconMapping: './deckgl-icon.json',
-    pickable: true
+    pickable: true,
 })
 
 export default iconLayer
