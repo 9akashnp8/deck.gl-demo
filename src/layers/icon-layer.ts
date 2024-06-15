@@ -1,36 +1,57 @@
 import { IconLayer } from "deck.gl";
 
+import flows from '../../public/data/flows.json'
+
 type DataType = {
+    id: string;
     name: string;
-    entries: number;
-    exits: number;
-    coordinates: [longitude: number, latitude: number];
+    lat: number;
+    lon: number;
 }
 
-const mockData: DataType[] = [
-    {
-        "name":"Guesthouse",
-        "entries": 3481,
-        "exits": 3616,
-        "coordinates":[54.373183, 24.486067]
-    },
-    {
-        "name":"SCAD IFP Office",
-        "entries": 3481,
-        "exits": 3616,
-        "coordinates":[54.389943, 24.501308]
-    }
-]
+function calculateIconSize(id: string) {
+    const internalTrips = flows
+        .filter((flow) => {
+            if (id == flow.dest || id == flow.origin) {
+                if (flow.dest == flow.origin) {
+                    return flow
+                }
+            }
+        })
+        .reduce((accumulator, currentValue) => (
+            accumulator + currentValue.count
+        ), 0)
+    const incomingTrips = flows
+        .filter((flow) => {
+            if (id == flow.dest && id !== flow.origin) {
+                return flow
+            }
+        })
+        .reduce((accumulator, currentValue) => (
+            accumulator + currentValue.count
+        ), 0)
+    const outgoingTrips = flows
+        .filter((flow) => {
+            if (id == flow.origin && id !== flow.dest) {
+                return flow
+            }
+        })
+        .reduce((accumulator, currentValue) => (
+            accumulator + currentValue.count
+        ), 0)
+    return (incomingTrips + outgoingTrips + internalTrips) / 3000
+}
+
 
 const iconLayer = new IconLayer<DataType>({
     id: 'icon-layer',
-    data: mockData,
-    getColor: (d: DataType) => [Math.sqrt(d.exits), 140, 0],
-    getIcon: (d: DataType) => 'marker',
-    getPosition: (d: DataType) => d.coordinates,
-    getSize: 40,
-    iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
-    iconMapping: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.json',
+    data: './data/locations.json',
+    getColor: (_: DataType) =>  [255, 255, 255],
+    getIcon: (_: DataType) => 'marker',
+    getPosition: (d: DataType) => [d.lon, d.lat],
+    getSize: (d: DataType) => calculateIconSize(d.id),
+    iconAtlas: './deckgl-icon.png',
+    iconMapping: './deckgl-icon.json',
     pickable: true
 })
 

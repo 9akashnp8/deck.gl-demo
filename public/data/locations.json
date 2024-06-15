@@ -1,0 +1,158 @@
+[
+    {
+        "id": "ZH",
+        "name": "Zürich",
+        "lat": 47.41260612,
+        "lon": 8.654789285
+    },
+    {
+        "id": "LU",
+        "name": "Luzern",
+        "lat": 47.06748397,
+        "lon": 8.110050801
+    },
+    {
+        "id": "UR",
+        "name": "Uri",
+        "lat": 46.7719997,
+        "lon": 8.628549055
+    },
+    {
+        "id": "SZ",
+        "name": "Schwyz",
+        "lat": 47.06179416,
+        "lon": 8.756141692
+    },
+    {
+        "id": "OW",
+        "name": "Obwalden",
+        "lat": 46.85245963,
+        "lon": 8.243185556
+    },
+    {
+        "id": "NW",
+        "name": "Nidwalden",
+        "lat": 46.92618108,
+        "lon": 8.405343061
+    },
+    {
+        "id": "GL",
+        "name": "Glarus",
+        "lat": 46.98114439,
+        "lon": 9.065751666
+    },
+    {
+        "id": "ZG",
+        "name": "Zug",
+        "lat": 47.15682372,
+        "lon": 8.537489989
+    },
+    {
+        "id": "FR",
+        "name": "Fribourg",
+        "lat": 46.71817057,
+        "lon": 7.077054878
+    },
+    {
+        "id": "SO",
+        "name": "Solothurn",
+        "lat": 47.30448119,
+        "lon": 7.638972981
+    },
+    {
+        "id": "BS",
+        "name": "Basel-Stadt",
+        "lat": 47.56462832,
+        "lon": 7.615071304
+    },
+    {
+        "id": "BL",
+        "name": "Basel-Landschaft",
+        "lat": 47.45135672,
+        "lon": 7.702698349
+    },
+    {
+        "id": "SH",
+        "name": "Schaffhausen",
+        "lat": 47.71360898,
+        "lon": 8.592669293
+    },
+    {
+        "id": "AR",
+        "name": "Appenzell Ausserrhoden",
+        "lat": 47.3654279,
+        "lon": 9.367015997
+    },
+    {
+        "id": "SG",
+        "name": "St. Gallen",
+        "lat": 47.23375658,
+        "lon": 9.275177132
+    },
+    {
+        "id": "AI",
+        "name": "Appenzell Innerrhoden",
+        "lat": 47.31743422,
+        "lon": 9.416055918
+    },
+    {
+        "id": "AG",
+        "name": "Aargau",
+        "lat": 47.4092835,
+        "lon": 8.156747028
+    },
+    {
+        "id": "GR",
+        "name": "Graubünden/Grigioni",
+        "lat": 46.65611381,
+        "lon": 9.62788288
+    },
+    {
+        "id": "TI",
+        "name": "Ticino",
+        "lat": 46.29486184,
+        "lon": 8.808973068
+    },
+    {
+        "id": "TG",
+        "name": "Thurgau",
+        "lat": 47.56884819,
+        "lon": 9.090522451
+    },
+    {
+        "id": "VS",
+        "name": "Valais/Wallis",
+        "lat": 46.20955542,
+        "lon": 7.604510105
+    },
+    {
+        "id": "VD",
+        "name": "Vaud",
+        "lat": 46.57069109,
+        "lon": 6.657498408
+    },
+    {
+        "id": "GE",
+        "name": "Genève",
+        "lat": 46.21657265,
+        "lon": 6.131090585
+    },
+    {
+        "id": "NE",
+        "name": "Neuchâtel",
+        "lat": 46.99553143,
+        "lon": 6.779945337
+    },
+    {
+        "id": "JU",
+        "name": "Jura",
+        "lat": 47.35090438,
+        "lon": 7.155997072
+    },
+    {
+        "id": "BE",
+        "name": "Bern/Berne",
+        "lat": 46.82205041,
+        "lon": 7.625278926
+    }
+]

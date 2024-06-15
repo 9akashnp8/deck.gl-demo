@@ -4,16 +4,14 @@ import { MapboxOverlay } from '@deck.gl/mapbox'
 import { DeckProps } from '@deck.gl/core';
 
 import lineLayer from './layers/line-layer'
-import arcLayer from './layers/arc-layer'
-import tripsLayer from './layers/trip-layer';
 import iconLayer from './layers/icon-layer';
 import './App.css'
 import { useCallback } from 'react'
 
 const INITIAL_VIEW_STATE: MapViewState = {
-  longitude: 54.373183,
-  latitude: 24.486067,
-  zoom: 13
+  longitude: 8.373183,
+  latitude: 46.886067,
+  zoom: 8
 }
 
 type Props = {
@@ -31,10 +29,8 @@ function DeckGLOverlay(props: DeckProps) {
 
 function App({ bounds }: Props) {
   const layers = [
-    // tripsLayer,
-    // arcLayer,
-    // lineLayer,
     iconLayer,
+    lineLayer,
   ]
   const applyViewConstraints = useCallback((viewState: any) => ({
     ...viewState,
@@ -49,7 +45,7 @@ function App({ bounds }: Props) {
       <Map
         style={{ height: '500px'}}
         initialViewState={INITIAL_VIEW_STATE}
-        mapStyle={'mapbox://styles/mapbox/light-v11'}
+        mapStyle={'mapbox://styles/mapbox/dark-v11'}
         mapboxAccessToken=''
       >
         <DeckGLOverlay

@@ -1,71 +1,35 @@
 import { LineLayer } from "deck.gl";
 
+import locations from '../../public/data/locations.json'
+
 type DataType = {
-  from: {
-    name: string;
-    coordinates: [longitude: number, latitude: number];
-  };
-  to: {
-    name: string;
-    coordinates: [longitude: number, latitude: number];
-  };
-  trips: number;
+    origin: string;
+    dest: string;
+    count: number
 };
 
-const mockData: DataType[] = [
-  {
-    from: {
-      name: "Guest House",
-      coordinates: [54.373183, 24.486067],
-    },
-    to: {
-      name: "SCAD Office",
-      coordinates: [54.389943, 24.501308],
-    },
-    trips: 120
-  },
-  {
-    from: {
-      name: "SCAD Office",
-      coordinates: [54.389943, 24.501308],
-    },
-    to: {
-      name: "Guest House",
-      coordinates: [54.373183, 24.486067],
-    },
-    trips: 10
-  },
-  {
-    from: {
-      name: "Corniche",
-      coordinates: [54.358542, 24.495664],
-    },
-    to: {
-      name: "Guest House",
-      coordinates: [54.373183, 24.486067],
-    },
-    trips: 500
-  },
-  {
-    from: {
-      name: "Al Reem Island",
-      coordinates: [54.404888, 24.498960],
-    },
-    to: {
-      name: "Corniche",
-      coordinates: [54.358542, 24.495664],
-    },
-    trips: 250
-  },
-];
+function getSourcePosition(id: string) {
+    const locationData = locations.filter((location) => {
+        if (location.id == id) {
+            return location
+        }
+    })
+    return locationData[0]
+}
 
 const lineLayer = new LineLayer<DataType>({
   id: "line-layer",
-  data: mockData,
-  getSourcePosition: (d: DataType) => d.from.coordinates,
-  getTargetPosition: (d: DataType) => d.to.coordinates,
-  getWidth: (d: DataType) => d.trips / 5,
-  getColor: (d: DataType) => [(d.trips / 255) * 10, 100, 0],
+  data: './data/flows.json',
+  getSourcePosition: (d: DataType) => {
+    const location = getSourcePosition(d.origin)
+    return [location.lon, location.lat]
+  },
+  getTargetPosition: (d: DataType) => {
+    const location = getSourcePosition(d.dest)
+    return [location.lon, location.lat]
+  },
+  getWidth: (d: DataType) => d.count / 5,
+  getColor: (d: DataType) => [Math.round(255 * (d.count / 3000)), Math.round(255 * (1 - (d.count / 3000))), 0],
   opacity: 0.5,
   widthUnits: "meters",
   pickable: true,

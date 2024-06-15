@@ -1,0 +1,17 @@
+{
+    "marker": {
+      "x": 0,
+      "y": 22,
+      "width": 650,
+      "height": 650,
+      "mask": true
+    },
+    "marker-warning": {
+      "x": 790,
+      "y": 22,
+      "width": 650,
+      "height": 650,
+      "anchorY": 100,
+      "mask": false
+    }
+  }
