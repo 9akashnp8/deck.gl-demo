@@ -8,7 +8,7 @@ type DataType = {
     count: number
 };
 
-function getSourcePosition(id: string) {
+export function getSourcePosition(id: string) {
     const locationData = locations.filter((location) => {
         if (location.id == id) {
             return location

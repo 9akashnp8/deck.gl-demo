@@ -9,7 +9,7 @@ type DataType = {
     lon: number;
 }
 
-function calculateIconSize(id: string) {
+export function calculateIconSize(id: string) {
     const [incoming, outgoing, internal] = getLocationTrips(id)
     return (incoming + outgoing + internal) / 3000
 }
